@@ -1,0 +1,959 @@
+[
+    {
+        "name": "article",
+        "datas": [
+            {
+                "path": "article",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all article",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "article/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by article by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "article/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in article by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "article/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "article",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "article/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "article/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "category",
+        "datas": [
+            {
+                "path": "category",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all category",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "category/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by category by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "category/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in category by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "category/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "category",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "category/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "category/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "contact",
+        "datas": [
+            {
+                "path": "contact",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all contact",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "contact/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by contact by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "contact/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in contact by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "contact/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "contact",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "contact/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "contact/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "file",
+        "datas": [
+            {
+                "path": "file",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all file",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "file/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by file by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "file/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in file by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "file/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "file",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "file/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "file/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "order",
+        "datas": [
+            {
+                "path": "order",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all order",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "order/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by order by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "order/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in order by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "order/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "order",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "order/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "order/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "orderdetail",
+        "datas": [
+            {
+                "path": "orderdetail",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all orderdetail",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "orderdetail/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by orderdetail by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "orderdetail/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in orderdetail by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "orderdetail/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "orderdetail",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "orderdetail/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "orderdetail/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "page",
+        "datas": [
+            {
+                "path": "page",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all page",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "page/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by page by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "page/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in page by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "page/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "page",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "page/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "page/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "product",
+        "datas": [
+            {
+                "path": "product",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all product",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "product/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by product by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "product/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in product by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "product/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "product",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "product/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "product/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "profile",
+        "datas": [
+            {
+                "path": "profile",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all profile",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "profile/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by profile by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "profile/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in profile by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "profile/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "profile",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "profile/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "profile/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "review",
+        "datas": [
+            {
+                "path": "review",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all review",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "review/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by review by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "review/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in review by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "review/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "review",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "review/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "review/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "name": "user",
+        "datas": [
+            {
+                "path": "user",
+                "method": "GET",
+                "className": "route-get",
+                "description": "get all user",
+                "parameters": null,
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "user/{id}",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Get by user by Id",
+                "parameters": {
+                    "id": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully"
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "user/search",
+                "method": "GET",
+                "className": "route-get",
+                "description": "Search in user by tag",
+                "parameters": {
+                    "tag": {
+                        "requied": true
+                    }
+                },
+                "returns": {
+                    "200": {
+                        "description": "Request successfully",
+                        "results": {
+                            "isSuccess": {
+                                "value": true
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Serveur error"
+                    }
+                }
+            },
+            {
+                "path": "user/by/page",
+                "method": "GET",
+                "className": "route-get",
+                "description": ""
+            },
+            {
+                "path": "user",
+                "method": "POST",
+                "className": "route-post",
+                "description": ""
+            },
+            {
+                "path": "user/{id}",
+                "method": "PUT",
+                "className": "route-put",
+                "description": ""
+            },
+            {
+                "path": "user/{id}",
+                "method": "DELETE",
+                "className": "route-delete",
+                "description": ""
+            }
+        ]
+    }
+]
