@@ -1,0 +1,50 @@
+<h2> {{ pageName }} </h2>
+
+<app-loading *ngIf="isLoading" ></app-loading>
+
+<div *ngIf="!isLoading">
+
+    <table class="table shadow  table-responsive" *ngIf="datas?.length">
+        <thead>
+            <tr>
+                <th scope="col">
+                    <input class="form-check-input" type="checkbox" name="" id="">
+                </th>
+                <th scope="col">N°</th>
+                <th scope="col" *ngFor="let name of entityNames">{{ name | formatName}}</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of datas; let index = index">
+                <td scope="row">
+                    <input class="form-check-input" type="checkbox" name="" id="">
+                </td>
+                <td scope="row">{{ index + 1}}</td>
+                <td *ngFor="let name of entityNames">{{ getValue(data, name) }}</td>
+                <td>
+                    <a href="" class="btn btn-success m-1">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a href="" class="btn btn-primary m-1">
+                        <i class="fa-solid fa-edit"></i>
+                    </a>
+                    <a href="" class="btn btn-danger m-1">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+          
+        </tbody>
+    </table>
+    <div *ngIf="!datas.length" class="empty-box shadow">
+        <p>
+            Aucune donnée disponible
+        </p>
+        <a class="btn btn-success" routerLink="add">
+            <i class="fa fa-plus"></i>
+            Ajouter
+        </a>
+    </div>
+   
+</div>
