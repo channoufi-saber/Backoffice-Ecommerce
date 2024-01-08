@@ -17,4 +17,8 @@ export class EntityService {
   getDatasByPage(entityName:String,pageNumber:Number,pageLimit:Number){
     return this.http.get(environment.apiUrl+entityName+"/by/page?pageNumber="+pageNumber+"&pageLimit="+pageLimit)
   }
+
+   searchDataByPage(entityName:String,query:String,pageNumber:Number,pageLimit:Number){
+    return this.http.get(environment.apiUrl+entityName+"/search?"+query+"&pageNumber="+pageNumber+"&pageLimit="+pageLimit)
+  }
 }

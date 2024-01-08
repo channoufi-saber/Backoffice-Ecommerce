@@ -1,0 +1,8 @@
+<form action="" class="d-flex py-2" (submit)="handleSubmit($event)" >
+	<input type="search" [name]="name" [(ngModel)]="value"
+	placeholder="Tag your search ..." aria-label="Search" class="form-control me-2 shadow-sm" 
+	(search)="handleSubmit($event)" 
+	 />
+	 <button class="btn btn-success shadow-sm"><i class="fa-solid fa-magnifying-glass"></i> </button>
+</form>
+

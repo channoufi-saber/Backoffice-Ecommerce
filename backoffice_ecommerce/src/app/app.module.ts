@@ -13,6 +13,9 @@ import { PaginateComponent } from './components/paginate/paginate.component';
 import { EntityComponent } from './components/forms/entity/entity.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormatNamePipe } from './pipes/format-name.pipe';
+import { SearchFormComponent } from './components/search-form/search-form.component';
+import { FormsModule} from '@angular/forms';
+import { FormatTagPipe } from './pipes/format-tag.pipe'
 
 @NgModule({
   declarations: [
@@ -25,12 +28,15 @@ import { FormatNamePipe } from './pipes/format-name.pipe';
     ModalComponent,
     PaginateComponent,
     EntityComponent,
-    FormatNamePipe
+    FormatNamePipe,
+    SearchFormComponent,
+    FormatTagPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

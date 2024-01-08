@@ -21,6 +21,8 @@ export class ContainerComponent {
   entityNamesAll: Array<String> = [];
   isLoading: Boolean = true;
   routes: Array<any> = routes
+  query:String=""
+  searchTag:String=""
 
 
   constructor( 
@@ -79,8 +81,18 @@ setPageLimit(event: any){
     
   }
 
+  searchData(data:any){
+    this.query=""
+    if(data){
+      this.searchTag=data.value
+      this.query += data.name + "="+data.value
+    }
+    this.getDatasByPage();
+  }
+
   getDatasByPage(){
-    this.entityService.getDatasByPage(this.pagePath, this.pageNumber, this.pageLimit).subscribe({
+    if(this.query){
+      this.entityService.searchDataByPage(this.pagePath,this.query,this.pageNumber, this.pageLimit).subscribe({
       next: (data: any)=>{
         const { isSuccess , results } = data
         if(isSuccess && results){
@@ -97,5 +109,25 @@ setPageLimit(event: any){
         console.log(error);
       }
     })
+    }else{
+      this.entityService.getDatasByPage(this.pagePath, this.pageNumber, this.pageLimit).subscribe({
+      next: (data: any)=>{
+        const { isSuccess , results } = data
+        if(isSuccess && results){
+          this.isLoading = false 
+          this.datas = results
+          this.result = data
+        }else{
+          // gestion des erreurs
+        }
+        
+      },
+      error: (error: any) =>{
+        // gestion des erreurs
+        console.log(error);
+      }
+    })
+    }
+    
   }
 }
