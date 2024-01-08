@@ -3,3 +3,7 @@
 .b{
 	/*border: 0.1px solid black;*/
 }
+
+a{
+	cursor: pointer;
+}

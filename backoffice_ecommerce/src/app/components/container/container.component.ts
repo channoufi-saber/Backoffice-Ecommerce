@@ -13,7 +13,10 @@ export class ContainerComponent {
 
   pagePath: String = ""
   pageName: String = ""
+  pageNumber:number=1
+  pageLimit:number=5
   datas: any;
+  result:any;
   entityNames: Array<String> = [];
   entityNamesAll: Array<String> = [];
   isLoading: Boolean = true;
@@ -28,12 +31,13 @@ export class ContainerComponent {
   ngOnInit(){
     this.initComp()   
 
-    this.entityService.getDatas(this.pagePath).subscribe({
+    this.entityService.getDatasByPage(this.pagePath,this.pageNumber,this.pageLimit).subscribe({
       next: (data: any)=>{
         const { isSuccess , results } = data
         if(isSuccess && results){
           this.isLoading = false 
           this.datas = results
+          this.result=data
         }        
       },
       error: (error: any) =>{
@@ -60,4 +64,38 @@ export class ContainerComponent {
     this.entityNames = [this.entityNamesAll[0]]
   }
 
+setPage(page: number){
+    this.pageNumber = page 
+    this.getDatasByPage()
+  }
+
+setPageLimit(event: any){
+    const { name, value } = event.target
+    const pageLimit = parseInt(value)
+    if(!isNaN(pageLimit)){
+      this.pageLimit = parseInt(value)
+      this.getDatasByPage()
+    }
+    
+  }
+
+  getDatasByPage(){
+    this.entityService.getDatasByPage(this.pagePath, this.pageNumber, this.pageLimit).subscribe({
+      next: (data: any)=>{
+        const { isSuccess , results } = data
+        if(isSuccess && results){
+          this.isLoading = false 
+          this.datas = results
+          this.result = data
+        }else{
+          // gestion des erreurs
+        }
+        
+      },
+      error: (error: any) =>{
+        // gestion des erreurs
+        console.log(error);
+      }
+    })
+  }
 }

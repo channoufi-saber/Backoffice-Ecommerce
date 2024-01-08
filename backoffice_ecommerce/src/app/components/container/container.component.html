@@ -3,40 +3,81 @@
 <app-loading *ngIf="isLoading" ></app-loading>
 
 <div *ngIf="!isLoading">
-
-    <table class="table shadow  table-responsive" *ngIf="datas?.length">
-        <thead>
-            <tr>
-                <th scope="col">
-                    <input class="form-check-input" type="checkbox" name="" id="">
-                </th>
-                <th scope="col">N°</th>
-                <th scope="col" *ngFor="let name of entityNames">{{ name | formatName}}</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let data of datas; let index = index">
-                <td scope="row">
-                    <input class="form-check-input" type="checkbox" name="" id="">
-                </td>
-                <td scope="row">{{ index + 1}}</td>
-                <td *ngFor="let name of entityNames">{{ getValue(data, name) }}</td>
-                <td>
-                    <a href="" class="btn btn-success m-1">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                    <a href="" class="btn btn-primary m-1">
-                        <i class="fa-solid fa-edit"></i>
-                    </a>
-                    <a href="" class="btn btn-danger m-1">
-                        <i class="fa-solid fa-trash"></i>
-                    </a>
-                </td>
-            </tr>
-          
-        </tbody>
-    </table>
+    <div class="table-container" *ngIf="result?.allCount">
+        <p *ngIf="result?.allCount > 1">
+            <strong>{{ result?.allCount}}</strong> données retrouvées
+        </p>
+        <p *ngIf="result?.allCount === 1">
+            <strong>{{ result?.allCount}}</strong> donnée retrouvée
+        </p>
+        <app-paginate
+        [current]="result.current"
+        [allCount]="result.allCount"
+        [next]="result.next"
+        [previous]="result.previous"
+        [pageLimit]="pageLimit"
+        (pageSelected)="setPage($event)"
+        ></app-paginate>
+        <table class="table shadow  table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <input class="form-check-input" type="checkbox" name="" id="">
+                    </th>
+                    <th scope="col">N°</th>
+                    <th scope="col" *ngFor="let name of entityNames">{{ name | formatName}}</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of datas; let index = index">
+                    <td scope="row">
+                        <input class="form-check-input" type="checkbox" name="" id="">
+                    </td>
+                    <td scope="row">{{ result?.allCount - ((result.current - 1) * pageLimit) - index }}</td>
+                    <td *ngFor="let name of entityNames">{{ getValue(data, name) }}</td>
+                    <td>
+                        <a href="" class="btn btn-success m-1">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <a href="" class="btn btn-primary m-1">
+                            <i class="fa-solid fa-edit"></i>
+                        </a>
+                        <a href="" class="btn btn-danger m-1">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+              
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-end">
+            <div class="item-par-page">
+                Item per page 
+                <select name="pageLimit" id="pageLimit"  (change)="setPageLimit($event)">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+        </div>
+        <app-paginate
+        [current]="result.current"
+        [allCount]="result.allCount"
+        [next]="result.next"
+        [previous]="result.previous"
+        [pageLimit]="pageLimit"
+        (pageSelected)="setPage($event)"
+        ></app-paginate>
+        <p *ngIf="result?.allCount > 1">
+            <strong>{{ result?.allCount}}</strong> données retrouvées
+        </p>
+        <p *ngIf="result?.allCount === 1">
+            <strong>{{ result?.allCount}}</strong> donnée retrouvée
+        </p>
+    </div>
     <div *ngIf="!datas.length" class="empty-box shadow">
         <p>
             Aucune donnée disponible
