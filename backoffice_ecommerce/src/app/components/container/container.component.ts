@@ -23,6 +23,8 @@ export class ContainerComponent {
   routes: Array<any> = routes
   query:String=""
   searchTag:String=""
+  displaySelectionBox:Boolean=false
+  imageUrl:String|null=null
 
 
   constructor( 
@@ -63,7 +65,8 @@ export class ContainerComponent {
     }
 
     this.entityNamesAll = getEntityProperties(this.pagePath)
-    this.entityNames = [this.entityNamesAll[0]]
+    const localData=this.getLocalData(this.pagePath)
+    this.entityNames = localData? localData?.entityNames : [this.entityNamesAll[0]]
   }
 
 setPage(page: number){
@@ -130,4 +133,55 @@ setPageLimit(event: any){
     }
     
   }
+
+  setDisplaySelectionBox(){
+    this.displaySelectionBox= !this.displaySelectionBox
+  }
+
+  setEntityNames(event:any,name:String){
+    const {checked}=event.target
+      if(checked){
+          if(!this.entityNames.includes(name)){
+            const oldValue=this.entityNames
+            oldValue.push(name)
+            this.entityNames=[]
+            this.entityNames=this.entityNamesAll.filter(name =>oldValue.includes(name))
+          }
+      }else{
+        this.entityNames=this.entityNames.filter((entityName:String)=>entityName !==name)
+      }
+      const index:any=this.pagePath
+      let data:any={"entityNames":this.entityNames}
+      this.saveLocalData(index,data)
+  }
+
+  setImageView(name:any,data:any){
+    if(!name && !data){
+      this.imageUrl=null
+    }
+    if(name === "imageUrls"){
+      this.imageUrl = data["imageUrls"][0]
+    }else{
+
+      this.imageUrl=null
+    }
+  }
+
+  saveLocalData(key:string,value:string) {
+    if(window.localStorage){
+      window.localStorage.setItem(key,JSON.stringify(value))
+    }
+  }
+
+
+getLocalData(key:any):any {
+    if(window.localStorage){
+      const value:any=window.localStorage.getItem(key)
+      return JSON.parse(value)
+    }
+  }
+
+
+
+  
 }

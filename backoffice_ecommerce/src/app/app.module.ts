@@ -15,7 +15,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormatNamePipe } from './pipes/format-name.pipe';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { FormsModule} from '@angular/forms';
-import { FormatTagPipe } from './pipes/format-tag.pipe'
+import { FormatTagPipe } from './pipes/format-tag.pipe';
+import { FormatValuePipe } from './pipes/format-value.pipe';
+import { ImagePreviewComponent } from './components/image-preview/image-preview.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FormatTagPipe } from './pipes/format-tag.pipe'
     EntityComponent,
     FormatNamePipe,
     SearchFormComponent,
-    FormatTagPipe
+    FormatTagPipe,
+    FormatValuePipe,
+    ImagePreviewComponent
   ],
   imports: [
     BrowserModule,

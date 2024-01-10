@@ -17,6 +17,8 @@
         <p *ngIf="result?.allCount === 1">
             <strong>{{ result?.allCount}}</strong> donnée retrouvée
         </p>
+
+
         <app-paginate
         [current]="result.current"
         [allCount]="result.allCount"
@@ -25,10 +27,30 @@
         [pageLimit]="pageLimit"
         (pageSelected)="setPage($event)"
         ></app-paginate>
-        <app-search-form
-        [name]="entityNames[0]"
-        (newValue)="searchData($event)"
-        ></app-search-form>
+       
+          <div class="d-flex gap-2 py-2 justify-content-end relative">
+            <button class="btn btn-success"  >
+                <i class="fa fa-plus"></i>
+                Add New
+            </button>
+            <button class="btn btn-success" (click)="setDisplaySelectionBox()">
+                <i class="fa-solid fa-layer-group"></i>
+            </button>
+            <div class="entityNames absolute shadow p-2" *ngIf="displaySelectionBox">
+                <ul>
+                    <li *ngFor="let entityName of entityNamesAll;let first=first">
+                        <input class="form-check-input" 
+                        type="checkbox"
+                        [checked]="first || entityNames.includes(entityName)"
+                        [disabled]="first" 
+                        (change)="setEntityNames($event,entityName)"
+                        name="" id="">
+                        {{entityName | formatName}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <table class="table shadow  table-responsive">
             <thead>
                 <tr>
@@ -46,8 +68,8 @@
                         <input class="form-check-input" type="checkbox" name="" id="">
                     </td>
                     <td scope="row">{{ result?.allCount - ((result.current - 1) * pageLimit) - index }}</td>
-                    <td *ngFor="let name of entityNames">
-                        <div [innerHTML]="getValue(data, name) | formatTag:searchTag" ></div>
+                    <td *ngFor="let name of entityNames" (click)="setImageView(name,data)" >
+                        <div [innerHTML]="getValue(data, name) | formatTag:searchTag | formatValue:[name,data]" ></div>
                     </td>
                     <td>
                         <a href="" class="btn btn-success m-1">
@@ -64,6 +86,9 @@
               
             </tbody>
         </table>
+        <app-image-preview *ngIf="imageUrl"
+        [src]="imageUrl" (closeModal)="setImageView(null,null)"
+        ></app-image-preview>
         <div class="d-flex justify-content-end">
             <div class="item-par-page">
                 Item per page 
