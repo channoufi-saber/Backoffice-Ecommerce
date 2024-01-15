@@ -14,10 +14,15 @@ import { EntityComponent } from './components/forms/entity/entity.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormatNamePipe } from './pipes/format-name.pipe';
 import { SearchFormComponent } from './components/search-form/search-form.component';
-import { FormsModule} from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { FormatTagPipe } from './pipes/format-tag.pipe';
 import { FormatValuePipe } from './pipes/format-value.pipe';
-import { ImagePreviewComponent } from './components/image-preview/image-preview.component'
+import { ImagePreviewComponent } from './components/image-preview/image-preview.component';
+import { DataManagerComponent } from './components/data-manager/data-manager.component';
+import { EntityFormComponent } from './components/entity-form/entity-form.component';
+import { FormatFormValuePipe } from './pipes/format-form-value.pipe';
+import { FormatTypePipe } from './pipes/format-type.pipe';
+import { ImageViewComponent } from './components/image-view/image-view.component'
 
 @NgModule({
   declarations: [
@@ -34,13 +39,19 @@ import { ImagePreviewComponent } from './components/image-preview/image-preview.
     SearchFormComponent,
     FormatTagPipe,
     FormatValuePipe,
-    ImagePreviewComponent
+    ImagePreviewComponent,
+    DataManagerComponent,
+    EntityFormComponent,
+    FormatFormValuePipe,
+    FormatTypePipe,
+    ImageViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

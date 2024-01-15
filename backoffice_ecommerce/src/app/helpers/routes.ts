@@ -1,22 +1,27 @@
 export const routes = [
     {
       path:"/product",
-      name: "Products"
+      name: "Products",
+      single:"Product"
     },
     {
       path:"/category",
-      name: "Categories"
+      name: "Categories",
+      single:"Category"
     },
     {
       path:"/user",
-      name: "Clients"
+      name: "Clients",
+      single:"Client"
     },
     {
       path:"/order",
-      name: "Orders"
+      name: "Orders",
+      single:"Order"
     },
     {
       path:"/contact",
-      name: "Contact"
+      name: "Contact",
+      single:"Contact"
     }
   ]

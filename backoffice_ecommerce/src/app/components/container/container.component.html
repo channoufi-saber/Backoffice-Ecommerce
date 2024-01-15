@@ -72,13 +72,13 @@
                         <div [innerHTML]="getValue(data, name) | formatTag:searchTag | formatValue:[name,data]" ></div>
                     </td>
                     <td>
-                        <a href="" class="btn btn-success m-1">
+                        <a [routerLink]="[data._id,'view']" class="btn btn-success m-1">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a href="" class="btn btn-primary m-1">
+                        <a [routerLink]="[data._id,'edit']" class="btn btn-primary m-1">
                             <i class="fa-solid fa-edit"></i>
                         </a>
-                        <a href="" class="btn btn-danger m-1">
+                        <a  class="btn btn-danger m-1">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </td>

@@ -1,0 +1,28 @@
+<form action="" [formGroup]="form">
+	<div class="form-inline" *ngFor="let name of entityNames">
+		<label for="">
+			{{name | formatName}} :
+		</label>
+
+		<input
+		*ngIf="(name | formatType:data) ==='INPUT' " 
+		class="form-control" 
+		type="text" [formControlName]="name" [value]="name | formatFormValue : data " />
+
+		<select name="" id=""
+		*ngIf="(name | formatType:data) ==='SELECT' "
+		[formControlName]="name" 
+		>
+		<option value=""> Yes</option>
+		<option value=""> No</option>
+		</select>
+		<div *ngIf="(name|formatType:data)==='IMAGE'" >
+			<app-image-view [imageUrls]="name | formatFormValue:data"></app-image-view>
+		</div>
+		</div>
+
+		<div class="action d-flex justify-content-end py-1 gap-2">
+			<button class="btn btn-danger">Cancel</button>
+			<button class="btn btn-success" (click)="handleSubmit()">Update</button>
+		</div>
+</form>

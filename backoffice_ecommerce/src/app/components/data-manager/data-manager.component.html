@@ -1,0 +1,15 @@
+<h2> {{pageName}}</h2>
+
+<div class="entity-content shadow p-2" *ngIf="data">
+	<ul class="list-group" *ngIf="action=='view'">
+		<li class="list-group-item" *ngFor="let name of entityNamesAll">
+			<strong>{{name | formatName}} </strong> :
+			<div [innerHTML]="getValue(name) | formatValue:[name,data] " ></div>
+		</li>
+	</ul>
+	<app-entity-form
+	*ngIf="action=='edit'"
+	[entityNames]="entityNamesAll"
+	[data]="data"
+	></app-entity-form>
+</div>
