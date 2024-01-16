@@ -4,7 +4,8 @@ enum Type{
   INPUT="INPUT",
   SELECT="SELECT",
   TEXT="TEXT",
-  IMAGE="IMAGE"
+  IMAGE="IMAGE",
+  OPTION="OPTION"
 }
 
 @Pipe({
@@ -24,6 +25,10 @@ export class FormatTypePipe implements PipeTransform {
 
     if(name ==="imageUrls"){
       type=Type.IMAGE
+    }
+
+    if(name ==="options"){
+      type=Type.OPTION
     }
 
    

@@ -13,8 +13,9 @@ export class EntityFormComponent implements OnInit {
   @Input() data:any;
 
   form:any;
+  formData:any={}
 
-  @Output() formChange=new EventEmitter<any>()
+  @Output() formEmit=new EventEmitter<any>()
   constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -42,7 +43,12 @@ export class EntityFormComponent implements OnInit {
   }
 
   handleSubmit(){
-    console.log(this.form.value);
+    this.formEmit.emit({type:"NORMAL",form:this.form.value})
+  }
+
+  handleUpdateOption(data:any){
+    this.formData["options"]=data
+    console.log(this.formData);
   }
 
 }

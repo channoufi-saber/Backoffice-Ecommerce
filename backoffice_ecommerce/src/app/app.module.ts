@@ -22,7 +22,8 @@ import { DataManagerComponent } from './components/data-manager/data-manager.com
 import { EntityFormComponent } from './components/entity-form/entity-form.component';
 import { FormatFormValuePipe } from './pipes/format-form-value.pipe';
 import { FormatTypePipe } from './pipes/format-type.pipe';
-import { ImageViewComponent } from './components/image-view/image-view.component'
+import { ImageViewComponent } from './components/image-view/image-view.component';
+import { OptionFormComponent } from './components/option-form/option-form.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ImageViewComponent } from './components/image-view/image-view.component
     EntityFormComponent,
     FormatFormValuePipe,
     FormatTypePipe,
-    ImageViewComponent
+    ImageViewComponent,
+    OptionFormComponent
   ],
   imports: [
     BrowserModule,

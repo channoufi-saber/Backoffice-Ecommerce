@@ -79,5 +79,8 @@ entity: any;
     return this.data[name]
   }
 
+  handleFormChange(data:any){
+    console.log(data);
+  }
 
 }
