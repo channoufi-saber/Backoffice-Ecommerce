@@ -1,5 +1,7 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
+import { lastValueFrom } from 'rxjs';
+import { EntityService } from 'src/app/services/entity.service';
 
 
 @Component({
@@ -13,12 +15,16 @@ export class EntityFormComponent implements OnInit {
   @Input() data:any;
 
   form:any;
-  formData:any={}
+  formData:any={};
+  categories:any;
+  categoriesSelected:any;
 
   @Output() formEmit=new EventEmitter<any>()
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,
+              private entityService:EntityService
+              ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.entityNames=this.entityNames.filter((name:String)=>{
       if(name === "created_at"){
         return false
@@ -29,7 +35,15 @@ export class EntityFormComponent implements OnInit {
       }
       return true
     })
+    if(this.entityNames.includes("categories")){
+      const data:any=await lastValueFrom(this.entityService.getDatas("category"))
+      this.categoriesSelected=this.data["categories"]
+      this.categories=data.results
+    }
     this.initForm()
+    this.initSelect()
+
+    
   }
 
   initForm(){
@@ -42,13 +56,40 @@ export class EntityFormComponent implements OnInit {
 
   }
 
+  initSelect(){
+    const WD:any=window
+    const $=WD.jQuery
+    const self=this
+
+    $(document).ready(function(){
+      $('.select-categories').select2();
+      $('.single-select').select2();
+      $('.select-categories').on('select2:select',function(event:any){
+        const values=$('.select-categories').select2("val")
+        self.formData["categories"]=values
+      });
+
+      $('.select-categories').on('select2:unselect',function(event:any){
+        const values=$('.select-categories').select2("val")
+        self.formData["categories"]=values
+      });
+      $('.single-select').on('select2:select',function(event:any){
+        const {name,value}=event.target
+        self.formData[name]=value
+      });
+    });
+  }
+
+
   handleSubmit(){
-    this.formEmit.emit({type:"NORMAL",form:this.form.value})
+    const data={...this.form.value,...this.formData}
+   this.formEmit.emit({type:"NORMAL",form:data})
   }
 
   handleUpdateOption(data:any){
     this.formData["options"]=data
-    console.log(this.formData);
   }
+
+ 
 
 }

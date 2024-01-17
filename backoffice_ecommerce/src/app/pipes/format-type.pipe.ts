@@ -3,8 +3,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 enum Type{
   INPUT="INPUT",
   SELECT="SELECT",
+  SELECT_CATEGORIES="SELECT_CATEGORIES",
   TEXT="TEXT",
   IMAGE="IMAGE",
+  CURRENCY="CURRENCY",
   OPTION="OPTION"
 }
 
@@ -27,10 +29,17 @@ export class FormatTypePipe implements PipeTransform {
       type=Type.IMAGE
     }
 
+    if(name ==="currency"){
+      type=Type.CURRENCY
+    }
+
     if(name ==="options"){
       type=Type.OPTION
     }
 
+    if(name ==="categories"){
+      type=Type.SELECT_CATEGORIES
+    }
    
     return type;
   }

@@ -6,16 +6,36 @@
 
 		<input
 		*ngIf="(name | formatType:data) ==='INPUT' " 
-		class="form-control" 
+		class="form-control" type="text"
 		type="text" [formControlName]="name" [value]="name | formatFormValue : data " />
 
-		<select name="" id=""
+		<select [name]="name" id=""
+		class="form-control single-select" 
 		*ngIf="(name | formatType:data) ==='SELECT' "
 		[formControlName]="name" 
 		>
-		<option value=""> Yes</option>
-		<option value=""> No</option>
+		<option [value]="true"
+		[selected]="(name | formatFormValue:data)==true"
+		> Yes</option>
+		<option [value]="false"
+		[selected]="(name | formatFormValue:data)==false"
+		> No</option>
 		</select>
+
+		<select [name]="name" id=""
+		class="form-control single-select" 
+		*ngIf="(name | formatType:data) ==='CURRENCY' "
+		[formControlName]="name" 
+		>
+		<option value="EUR"
+		[selected]="(name | formatFormValue:data)=='EUR'"
+		> EUR</option>
+		<option value="USD"
+		[selected]="(name | formatFormValue:data)=='USD'"
+		> USD</option>
+		</select>
+
+
 		<div *ngIf="(name|formatType:data)==='IMAGE'" >
 			<app-image-view [imageUrls]="name | formatFormValue:data"></app-image-view>
 		</div>
@@ -23,6 +43,20 @@
 			<app-option-form [options]="name | formatFormValue:data"
 			(emitOption)="handleUpdateOption($event)"
 			></app-option-form>
+		</div>
+		<div *ngIf="(name|formatType:data)==='SELECT_CATEGORIES'" >
+			<select name="categories[]" 
+			class="form-control select-categories" 
+
+			multiple ="multiple"
+			>
+				<option [value]="category._id"
+				[selected]="categoriesSelected.includes(category._id)"
+				*ngFor="let category of categories"
+				 >
+					{{category.name}}
+				</option>
+			</select>
 		</div>
 		</div>
 
