@@ -37,7 +37,7 @@
 
 
 		<div *ngIf="(name|formatType:data)==='IMAGE'" >
-			<app-image-view [imageUrls]="name | formatFormValue:data"></app-image-view>
+			<app-image-view (emitFile)="handleChangeFile($event)" [imageUrls]="name | formatFormValue:data"></app-image-view>
 		</div>
 		<div *ngIf="(name|formatType:data)==='OPTION'" >
 			<app-option-form [options]="name | formatFormValue:data"

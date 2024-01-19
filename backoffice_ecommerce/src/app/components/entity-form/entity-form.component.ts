@@ -18,6 +18,7 @@ export class EntityFormComponent implements OnInit {
   formData:any={};
   categories:any;
   categoriesSelected:any;
+  files:any;
 
   @Output() formEmit=new EventEmitter<any>()
   constructor(private fb:FormBuilder,
@@ -83,13 +84,19 @@ export class EntityFormComponent implements OnInit {
 
   handleSubmit(){
     const data={...this.form.value,...this.formData}
-   this.formEmit.emit({type:"NORMAL",form:data})
+    if(this.files){
+      data["files"]=this.files
+    }
+   this.formEmit.emit({...data})
   }
 
   handleUpdateOption(data:any){
     this.formData["options"]=data
   }
 
+  handleChangeFile(files:any){
+    this.files=files
+  }
  
 
 }
