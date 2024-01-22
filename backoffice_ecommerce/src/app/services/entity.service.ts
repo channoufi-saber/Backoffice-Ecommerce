@@ -25,4 +25,8 @@ export class EntityService {
    searchDataByPage(entityName:String,query:String,pageNumber:Number,pageLimit:Number){
     return this.http.get(environment.apiUrl+entityName+"/search?"+query+"&pageNumber="+pageNumber+"&pageLimit="+pageLimit)
   }
+
+  updateData(entityName:String,entityId:String,data:any){
+    return this.http.put(environment.apiUrl+entityName+"/"+entityId,data)
+  }
 }

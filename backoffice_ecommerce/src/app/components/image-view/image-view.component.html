@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<div class="col-md-3 p-2">
-		<input type="file" name="file" id="file" class="none" (change)="addFile($event)">
+		<input type="file" name="file" id="file" class="none" (change)="addFile($event)" multiple="true">
 		<button class="btn btn-success" (click)="handleAddFile($event)"   >
 			<i class="fa fa-plus"></i>
 			Ajouter Image

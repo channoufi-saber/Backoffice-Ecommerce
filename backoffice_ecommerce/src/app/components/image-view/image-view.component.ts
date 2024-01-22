@@ -44,8 +44,12 @@ export class ImageViewComponent implements OnInit {
   }
 
   addFile(event:any){
-    const file=event.target.files[0]
+    const files=event.target.files
     const self:any=this
+
+    for(let index=0;index <files.length;index++){
+      const file=files[index];
+    
     if(!isImage(file.name)){
       this.errorMessage="Error file type!"
       return
@@ -69,6 +73,7 @@ export class ImageViewComponent implements OnInit {
             }
             return fileItem
           })
+          self.isUpdating=false
         }else{
         self.files.push({
           imageUrl: fileReader.result,
@@ -80,6 +85,7 @@ export class ImageViewComponent implements OnInit {
       }
     }
   }
+}
 
   removeImage(url:String){
     this.files=this.files.map((fileItem:any)=>{
@@ -101,6 +107,7 @@ export class ImageViewComponent implements OnInit {
   updateFile(){
     this.files=this.files.filter((fileItem:any)=>fileItem.action !=="REMOVE")
     this.availableFiles=this.files.filter((fileItem:any)=>fileItem.action !=="DELETE")
-    this.emitFile.emit(this.files)
+    const sendFiles=this.files.filter((fileItem:any)=>fileItem.action !=="OLD")
+    this.emitFile.emit(sendFiles)
   }
 }

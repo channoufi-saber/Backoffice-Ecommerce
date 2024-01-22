@@ -80,7 +80,38 @@ entity: any;
   }
 
   handleFormChange(data:any){
-    console.log(data);
+    let formData:any={};
+    const entity:any=this.entity
+
+    if(data?.files && !data?.files?.length){
+      const files=data.files
+      delete data.files
+      formData=new FormData()
+      formData.append([entity],JSON.stringify(data))
+        files.filter((fileItem:any)=>fileItem.action !== "DELETE").forEach((fileItem:any)=>{
+          formData.append("file",fileItem.file)
+      })
+
+        const deleteFiles=files.filter((fileItem:any)=> ["DELETE","UPDATE"].includes(fileItem.action))
+        .map((fileItem:any)=>fileItem.oldImage)
+
+        formData.append("deleteFiles",JSON.stringify(deleteFiles))
+    }else{
+      formData[entity]=data
+    }
+
+    if(formData){
+      console.log(formData)
+      this.entityService.updateData(this.entity,this.entityId,formData).subscribe({
+
+        next:(value:any)=>{
+          console.log(value)
+        },
+        error:(error:any)=>{
+        console.log(error)
+      }
+      })
+    }
   }
 
 }

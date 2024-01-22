@@ -84,7 +84,7 @@ export class EntityFormComponent implements OnInit {
 
   handleSubmit(){
     const data={...this.form.value,...this.formData}
-    if(this.files){
+    if(this.files?.length){
       data["files"]=this.files
     }
    this.formEmit.emit({...data})
