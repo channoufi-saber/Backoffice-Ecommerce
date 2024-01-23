@@ -23,7 +23,8 @@ import { EntityFormComponent } from './components/entity-form/entity-form.compon
 import { FormatFormValuePipe } from './pipes/format-form-value.pipe';
 import { FormatTypePipe } from './pipes/format-type.pipe';
 import { ImageViewComponent } from './components/image-view/image-view.component';
-import { OptionFormComponent } from './components/option-form/option-form.component'
+import { OptionFormComponent } from './components/option-form/option-form.component';
+import { WebNotificationComponent } from './components/web-notification/web-notification.component'
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { OptionFormComponent } from './components/option-form/option-form.compon
     FormatFormValuePipe,
     FormatTypePipe,
     ImageViewComponent,
-    OptionFormComponent
+    OptionFormComponent,
+    WebNotificationComponent
   ],
   imports: [
     BrowserModule,

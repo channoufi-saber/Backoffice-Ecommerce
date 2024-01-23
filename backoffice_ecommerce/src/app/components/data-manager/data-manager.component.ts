@@ -5,6 +5,8 @@ import { actions } from 'src/app/helpers/actions';
 import { formatToCamelcase } from 'src/app/helpers/util';
 import { EntityService } from 'src/app/services/entity.service';
 import { getEntityProperties } from 'src/app/helpers/helpers';
+import { WebNotificationService } from 'src/app/services/web-notification.service';
+import { NotificationModel } from 'src/app/models/notification-model';
 
 
 
@@ -29,7 +31,8 @@ entity: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private entityService: EntityService
+    private entityService: EntityService,
+    private notificationService:WebNotificationService
 
     ){}
 
@@ -105,10 +108,17 @@ entity: any;
       this.entityService.updateData(this.entity,this.entityId,formData).subscribe({
 
         next:(value:any)=>{
-          console.log(value)
+          console.log(value);
+          const notif=new NotificationModel()
+          notif.message="Update success"
+          notif.status="success"
+          this.notificationService.emitNotification(notif)
         },
         error:(error:any)=>{
-        console.log(error)
+        const notif=new NotificationModel()
+          notif.message="Update error"
+          notif.status="danger"
+          this.notificationService.emitNotification(notif)
       }
       })
     }

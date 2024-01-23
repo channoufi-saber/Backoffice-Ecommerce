@@ -1,0 +1,3 @@
+<div *ngIf="notification?.message" class="alert alert-{{notification.status}}" role="alert">
+	<div [innerHTML]="notification?.message" ></div>
+</div>
